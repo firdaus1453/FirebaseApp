@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.firdaus1453.firebaseapp.autentikasifirebase.LoginActivity;
+import me.firdaus1453.firebaseapp.databasefirebase.DatabaseFirebaseActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -219,10 +223,15 @@ public class MainActivity extends AppCompatActivity {
             case R.id.sign_out:
                 auth.signOut();
 //                myIntent(LoginActivity.class);
+                auth.getInstance().signOut();
                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
                 finish();
                 break;
         }
+    }
+
+    private void signOut(){
+        
     }
 
     private void verifikasiemail() {
@@ -269,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onListhewan(View view) {
         //   myIntent(DatabaseFirebaseActivity.class);
-//        startActivity(new Intent(this, DatabaseFirebaseactivity.class));
+        startActivity(new Intent(this, DatabaseFirebaseActivity.class));
     }
 
     public void onAdmob(View view) {
